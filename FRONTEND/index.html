@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Gestion d'articles</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Gestion d'articles</h1>
+            <p>API Backend avec Node.js et SQLite</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Formulaire de création -->
+            <div class="card">
+                <h2>✏️ Créer un article</h2>
+                <form id="createForm">
+                    <input type="text" id="titre" placeholder="Titre de l'article *" required>
+                    <textarea id="contenu" placeholder="Contenu de l'article *" required></textarea>
+                    <input type="text" id="auteur" placeholder="Nom de l'auteur *" required>
+                    <input type="text" id="categorie" placeholder="Catégorie (optionnel)">
+                    <input type="text" id="tags" placeholder="Tags (optionnel) ex: javascript,nodejs">
+                    <button type="submit">Publier l'article</button>
+                </form>
+            </div>
+
+            <!-- Barre de recherche et filtres -->
+            <div class="card">
+                <h2>🔍 Rechercher</h2>
+                <div class="search-section">
+                    <input type="text" id="searchInput" placeholder="Rechercher par titre ou contenu...">
+                    <button id="searchBtn">Rechercher</button>
+                    <button id="resetSearchBtn" class="btn-secondary">Réinitialiser</button>
+                </div>
+                
+                <div class="filters">
+                    <h3>Filtres</h3>
+                    <div class="filter-group">
+                        <input type="text" id="filterCategorie" placeholder="Filtrer par catégorie">
+                        <input type="text" id="filterAuteur" placeholder="Filtrer par auteur">
+                        <input type="date" id="filterDate" placeholder="Filtrer par date">
+                        <button id="applyFiltersBtn">Appliquer filtres</button>
+                        <button id="resetFiltersBtn" class="btn-secondary">Réinitialiser</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liste des articles -->
+            <div class="card">
+                <h2>📚 Liste des articles</h2>
+                <div id="articlesList" class="articles-list">
+                    <div class="loading">Chargement des articles...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour modifier un article -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Modifier l'article</h2>
+                <span class="close">&times;</span>
+            </div>
+            <form id="editForm">
+                <input type="text" id="editTitre" placeholder="Titre">
+                <textarea id="editContenu" placeholder="Contenu"></textarea>
+                <input type="text" id="editCategorie" placeholder="Catégorie">
+                <input type="text" id="editTags" placeholder="Tags">
+                <button type="submit">Enregistrer les modifications</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
