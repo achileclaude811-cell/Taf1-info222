@@ -31,7 +31,7 @@ async function loadArticles() {
         displayArticles(articles);
     } catch (error) {
         console.error('Erreur:', error);
-        document.getElementById('articlesList').innerHTML = '<div class="empty">❌ Erreur de connexion au serveur</div>';
+        document.getElementById('articlesList').innerHTML = '<div class="empty">Erreur de connexion au serveur</div>';
     }
 }
 
@@ -40,7 +40,7 @@ function displayArticles(articles) {
     const container = document.getElementById('articlesList');
     
     if (!articles || articles.length === 0) {
-        container.innerHTML = '<div class="empty">📭 Aucun article trouvé</div>';
+        container.innerHTML = '<div class="empty">Aucun article trouvé</div>';
         return;
     }
     
@@ -52,12 +52,12 @@ function displayArticles(articles) {
             </div>
             <div class="article-content">${escapeHtml(article.contenu)}</div>
             <div class="article-meta">
-                <span class="article-author">✍️ ${escapeHtml(article.auteur)}</span>
-                ${article.categorie ? `<span class="article-categorie">📁 ${escapeHtml(article.categorie)}</span>` : ''}
-                ${article.tags ? `<span class="article-tags">🏷️ ${escapeHtml(article.tags)}</span>` : ''}
+                <span class="article-author"> ${escapeHtml(article.auteur)}</span>
+                ${article.categorie ? `<span class="article-categorie">${escapeHtml(article.categorie)}</span>` : ''}
+                ${article.tags ? `<span class="article-tags">${escapeHtml(article.tags)}</span>` : ''}
             </div>
             <div class="article-actions">
-                <button onclick="editArticle(${article.id})" class="btn-secondary">✏️ Modifier</button>
+                <button onclick="editArticle(${article.id})" class="btn-secondary">Modifier</button>
                 <button onclick="deleteArticle(${article.id})" class="btn-danger">🗑️ Supprimer</button>
             </div>
         </div>
@@ -84,16 +84,16 @@ async function createArticle(e) {
         });
         
         if (response.ok) {
-            alert('✅ Article créé avec succès !');
+            alert(' Article créé avec succès !');
             document.getElementById('createForm').reset();
             loadArticles();
         } else {
             const error = await response.json();
-            alert(`❌ Erreur: ${error.error}`);
+            alert(` Erreur: ${error.error}`);
         }
     } catch (error) {
         console.error('Erreur:', error);
-        alert('❌ Erreur de connexion au serveur');
+        alert('Erreur de connexion au serveur');
     }
 }
 
@@ -112,7 +112,7 @@ async function searchArticles() {
         displayArticles(articles);
     } catch (error) {
         console.error('Erreur:', error);
-        alert('❌ Erreur lors de la recherche');
+        alert('Erreur lors de la recherche');
     }
 }
 
@@ -147,7 +147,7 @@ async function applyFilters() {
         displayArticles(articles);
     } catch (error) {
         console.error('Erreur:', error);
-        alert('❌ Erreur lors de l\'application des filtres');
+        alert('Erreur lors de l\'application des filtres');
     }
 }
 
@@ -174,7 +174,7 @@ async function editArticle(id) {
         document.getElementById('editModal').style.display = 'block';
     } catch (error) {
         console.error('Erreur:', error);
-        alert('❌ Erreur lors du chargement de l\'article');
+        alert(' Erreur lors du chargement de l\'article');
     }
 }
 
@@ -201,16 +201,16 @@ async function updateArticle(e) {
         });
         
         if (response.ok) {
-            alert('✅ Article modifié avec succès !');
+            alert('Article modifié avec succès !');
             document.getElementById('editModal').style.display = 'none';
             loadArticles();
         } else {
             const error = await response.json();
-            alert(`❌ Erreur: ${error.error}`);
+            alert(`Erreur: ${error.error}`);
         }
     } catch (error) {
         console.error('Erreur:', error);
-        alert('❌ Erreur lors de la modification');
+        alert(' Erreur lors de la modification');
     }
 }
 
@@ -224,15 +224,15 @@ async function deleteArticle(id) {
         });
         
         if (response.ok) {
-            alert('✅ Article supprimé avec succès !');
+            alert(' Article supprimé avec succès !');
             loadArticles();
         } else {
             const error = await response.json();
-            alert(`❌ Erreur: ${error.error}`);
+            alert(` Erreur: ${error.error}`);
         }
     } catch (error) {
         console.error('Erreur:', error);
-        alert('❌ Erreur lors de la suppression');
+        alert(' Erreur lors de la suppression');
     }
 }
 
